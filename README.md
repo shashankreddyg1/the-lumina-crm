@@ -4,7 +4,7 @@
 
 Sales reps lose Friday afternoons writing up call notes. LuminaCRM records the call, transcribes it with AI, and pulls out concrete follow-ups — owners and due dates included — so reps just review and click approve.
 
-🔗 **Live demo:** https://lumina-crm.vercel.app
+🔗 **Live demo:** https://lumina-crm-peach.vercel.app
 
 ## What it does
 
@@ -28,7 +28,7 @@ To run the real pipeline, set `OPENAI_API_KEY` (Whisper + GPT) and `DATABASE_URL
 
 ## Screenshots
 
-> Screenshots coming soon — captured from the live demo.
+> Screenshots from the live demo (demo mode with sample data).
 
 | Dashboard | Call detail | Action items |
 | --------- | ----------- | ------------ |
