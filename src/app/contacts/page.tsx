@@ -40,15 +40,15 @@ export default async function ContactsPage() {
     <div className="space-y-6">
       <div className="flex items-start justify-between">
         <div>
-          <h1 className="text-2xl font-bold tracking-tight text-slate-900">
+          <h1 className="text-2xl font-bold tracking-tight text-zinc-100">
             Contacts
           </h1>
-          <p className="mt-1 text-sm text-slate-500">
+          <p className="mt-1 text-sm text-zinc-400">
             People and companies in your sales network.
           </p>
         </div>
         {demo && (
-          <span className="rounded-full bg-amber-100 px-3 py-1 text-xs font-medium text-amber-800">
+          <span className="rounded-full bg-amber-400/10 px-3 py-1 text-xs font-medium text-amber-300">
             Demo mode
           </span>
         )}
@@ -60,7 +60,7 @@ export default async function ContactsPage() {
         {contacts.map((c) => (
           <div
             key={c.id}
-            className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm"
+            className="rounded-xl border border-zinc-800 bg-zinc-900 p-5 shadow-sm"
           >
             <div className="flex items-center gap-3">
               <span className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-100 text-sm font-bold text-brand-700">
@@ -72,19 +72,19 @@ export default async function ContactsPage() {
                   .toUpperCase()}
               </span>
               <div>
-                <p className="font-medium text-slate-900">{c.name}</p>
-                <p className="text-sm text-slate-500">{c.title}</p>
+                <p className="font-medium text-zinc-100">{c.name}</p>
+                <p className="text-sm text-zinc-400">{c.title}</p>
               </div>
             </div>
-            <div className="mt-4 space-y-1 text-sm text-slate-600">
-              <p className="font-medium text-slate-700">{c.company}</p>
+            <div className="mt-4 space-y-1 text-sm text-zinc-400">
+              <p className="font-medium text-zinc-300">{c.company}</p>
               {c.email && <p>{c.email}</p>}
               {c.phone && <p>{c.phone}</p>}
             </div>
           </div>
         ))}
         {contacts.length === 0 && (
-          <p className="col-span-full rounded-xl border border-dashed border-slate-300 bg-white p-10 text-center text-sm text-slate-500">
+          <p className="col-span-full rounded-xl border border-dashed border-zinc-700 bg-zinc-900 p-10 text-center text-sm text-zinc-400">
             No contacts yet — add your first one above.
           </p>
         )}

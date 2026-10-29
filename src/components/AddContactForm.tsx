@@ -46,14 +46,14 @@ export default function AddContactForm() {
   }
 
   const inputCls =
-    "rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-brand-500 focus:outline-none focus:ring-1 focus:ring-brand-500";
+    "rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-100 placeholder:text-zinc-500 focus:border-brand-500 focus:outline-none focus:ring-1 focus:ring-brand-500";
 
   return (
     <form
       onSubmit={onSubmit}
-      className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm"
+      className="rounded-xl border border-zinc-800 bg-zinc-900 p-5 shadow-sm"
     >
-      <h2 className="font-semibold text-slate-900">Add a contact</h2>
+      <h2 className="font-semibold text-zinc-100">Add a contact</h2>
       <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
         <input
           className={inputCls}
@@ -89,7 +89,7 @@ export default function AddContactForm() {
         >
           {busy ? "Adding…" : "Add contact"}
         </button>
-        {error && <p className="text-sm text-red-600">{error}</p>}
+        {error && <p className="text-sm text-red-400">{error}</p>}
       </div>
     </form>
   );

@@ -70,22 +70,22 @@ export default async function CallDetailPage({
       <div>
         <Link
           href="/calls"
-          className="text-sm font-medium text-brand-600 hover:text-brand-700"
+          className="text-sm font-medium text-brand-400 hover:text-brand-300"
         >
           ← Back to calls
         </Link>
         <div className="mt-2 flex flex-wrap items-center gap-3">
-          <h1 className="text-2xl font-bold tracking-tight text-slate-900">
+          <h1 className="text-2xl font-bold tracking-tight text-zinc-100">
             {call.title}
           </h1>
           <StatusBadge status={call.status} />
           {call.demoMode && (
-            <span className="rounded-full bg-amber-100 px-3 py-1 text-xs font-medium text-amber-800">
+            <span className="rounded-full bg-amber-400/10 px-3 py-1 text-xs font-medium text-amber-300">
               Demo mode
             </span>
           )}
         </div>
-        <p className="mt-1 text-sm text-slate-500">
+        <p className="mt-1 text-sm text-zinc-400">
           {call.contactName ?? "No contact"}
           {call.contactCompany ? ` · ${call.contactCompany}` : ""} ·{" "}
           {new Date(call.createdAt).toLocaleDateString()}
@@ -93,20 +93,20 @@ export default async function CallDetailPage({
       </div>
 
       {call.audioUrl && (
-        <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
-          <h2 className="mb-3 font-semibold text-slate-900">Recording</h2>
+        <div className="rounded-xl border border-zinc-800 bg-zinc-900 p-5 shadow-sm">
+          <h2 className="mb-3 font-semibold text-zinc-100">Recording</h2>
           <audio controls src={call.audioUrl} className="w-full" />
         </div>
       )}
 
-      <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
-        <h2 className="mb-3 font-semibold text-slate-900">Transcript</h2>
+      <div className="rounded-xl border border-zinc-800 bg-zinc-900 p-5 shadow-sm">
+        <h2 className="mb-3 font-semibold text-zinc-100">Transcript</h2>
         {call.transcript ? (
-          <div className="max-h-96 overflow-y-auto whitespace-pre-wrap rounded-lg bg-slate-50 p-4 text-sm leading-relaxed text-slate-700">
+          <div className="max-h-96 overflow-y-auto whitespace-pre-wrap rounded-lg bg-zinc-950 p-4 text-sm leading-relaxed text-zinc-300">
             {call.transcript}
           </div>
         ) : (
-          <p className="text-sm text-slate-500">
+          <p className="text-sm text-zinc-400">
             No transcript yet. Run transcription to generate one from the
             recording.
           </p>

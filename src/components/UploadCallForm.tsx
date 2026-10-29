@@ -54,10 +54,10 @@ export default function UploadCallForm() {
   return (
     <form
       onSubmit={onSubmit}
-      className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm"
+      className="rounded-xl border border-zinc-800 bg-zinc-900 p-5 shadow-sm"
     >
-      <h2 className="font-semibold text-slate-900">Upload a call recording</h2>
-      <p className="mt-1 text-sm text-slate-500">
+      <h2 className="font-semibold text-zinc-100">Upload a call recording</h2>
+      <p className="mt-1 text-sm text-zinc-400">
         MP3, WAV, or M4A. After upload, run transcription and action-item
         extraction from the call page.
       </p>
@@ -67,13 +67,13 @@ export default function UploadCallForm() {
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           placeholder="Call title, e.g. Discovery call — Acme Corp"
-          className="flex-1 rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-brand-500 focus:outline-none focus:ring-1 focus:ring-brand-500"
+          className="flex-1 rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-100 placeholder:text-zinc-500 focus:border-brand-500 focus:outline-none focus:ring-1 focus:ring-brand-500"
         />
         <input
           type="file"
           accept="audio/*"
           onChange={(e) => setFile(e.target.files?.[0] ?? null)}
-          className="text-sm text-slate-500 file:mr-3 file:rounded-lg file:border-0 file:bg-slate-100 file:px-3 file:py-2 file:text-sm file:font-medium file:text-slate-700 hover:file:bg-slate-200"
+          className="text-sm text-zinc-400 file:mr-3 file:rounded-lg file:border-0 file:bg-zinc-800 file:px-3 file:py-2 file:text-sm file:font-medium file:text-zinc-300 hover:file:bg-zinc-700"
         />
         <button
           type="submit"
@@ -87,12 +87,12 @@ export default function UploadCallForm() {
           onClick={useSampleCall}
           disabled={busy}
           title="Create a sample call to try the transcribe → extract pipeline"
-          className="rounded-lg border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 disabled:opacity-50"
+          className="rounded-lg border border-zinc-700 px-4 py-2 text-sm font-medium text-zinc-300 hover:bg-white/5 disabled:opacity-50"
         >
           Use a sample call
         </button>
       </div>
-      {error && <p className="mt-2 text-sm text-red-600">{error}</p>}
+      {error && <p className="mt-2 text-sm text-red-400">{error}</p>}
     </form>
   );
 }

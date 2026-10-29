@@ -44,15 +44,15 @@ export default async function CallsPage() {
     <div className="space-y-6">
       <div className="flex items-start justify-between">
         <div>
-          <h1 className="text-2xl font-bold tracking-tight text-slate-900">
+          <h1 className="text-2xl font-bold tracking-tight text-zinc-100">
             Calls
           </h1>
-          <p className="mt-1 text-sm text-slate-500">
+          <p className="mt-1 text-sm text-zinc-400">
             Upload a recording, transcribe it with AI, and extract action items.
           </p>
         </div>
         {demo && (
-          <span className="rounded-full bg-amber-100 px-3 py-1 text-xs font-medium text-amber-800">
+          <span className="rounded-full bg-amber-400/10 px-3 py-1 text-xs font-medium text-amber-300">
             Demo mode
           </span>
         )}
@@ -60,17 +60,17 @@ export default async function CallsPage() {
 
       <UploadCallForm />
 
-      <div className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
-        <ul className="divide-y divide-slate-100">
+      <div className="overflow-hidden rounded-xl border border-zinc-800 bg-zinc-900 shadow-sm">
+        <ul className="divide-y divide-zinc-800">
           {calls.map((c) => (
             <li key={c.id}>
               <Link
                 href={`/calls/${c.id}`}
-                className="flex items-center justify-between px-5 py-4 hover:bg-slate-50"
+                className="flex items-center justify-between px-5 py-4 hover:bg-zinc-900/5"
               >
                 <div>
-                  <p className="font-medium text-slate-900">{c.title}</p>
-                  <p className="mt-0.5 text-sm text-slate-500">
+                  <p className="font-medium text-zinc-100">{c.title}</p>
+                  <p className="mt-0.5 text-sm text-zinc-400">
                     {c.contactName} · {c.company} ·{" "}
                     {new Date(c.createdAt).toLocaleDateString()}
                     {c.openItems > 0 && ` · ${c.openItems} open action items`}
@@ -81,7 +81,7 @@ export default async function CallsPage() {
             </li>
           ))}
           {calls.length === 0 && (
-            <li className="px-5 py-10 text-center text-sm text-slate-500">
+            <li className="px-5 py-10 text-center text-sm text-zinc-400">
               No calls yet — upload your first recording above.
             </li>
           )}

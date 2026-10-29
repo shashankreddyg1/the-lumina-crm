@@ -64,9 +64,9 @@ export default function ActionItemsPanel({
   const canExtract = hasTranscript && status !== "ANALYZED";
 
   return (
-    <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+    <div className="rounded-xl border border-zinc-800 bg-zinc-900 p-5 shadow-sm">
       <div className="flex flex-wrap items-center justify-between gap-3">
-        <h2 className="font-semibold text-slate-900">Action items</h2>
+        <h2 className="font-semibold text-zinc-100">Action items</h2>
         <div className="flex gap-2">
           <button
             onClick={() =>
@@ -78,7 +78,7 @@ export default function ActionItemsPanel({
                 ? "Transcribe with mock AI output (demo mode)"
                 : "Transcribe with Whisper"
             }
-            className="rounded-lg border border-slate-300 px-3 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 disabled:opacity-50"
+            className="rounded-lg border border-zinc-700 px-3 py-1.5 text-sm font-medium text-zinc-300 hover:bg-zinc-900/5 disabled:opacity-50"
           >
             {busy === "transcribe" ? "Transcribing…" : "Transcribe"}
           </button>
@@ -100,36 +100,36 @@ export default function ActionItemsPanel({
       </div>
 
       {demoMode && (
-        <p className="mt-3 rounded-lg bg-amber-50 px-3 py-2 text-xs text-amber-800">
+        <p className="mt-3 rounded-lg bg-amber-400/10 px-3 py-2 text-xs text-amber-300">
           Demo mode: transcription and extraction run on mock AI output, so you
           can try the full pipeline with no API key. Add{" "}
           <code className="font-mono">OPENAI_API_KEY</code> to use Whisper + GPT
           for real.
         </p>
       )}
-      {error && <p className="mt-3 text-sm text-red-600">{error}</p>}
+      {error && <p className="mt-3 text-sm text-red-400">{error}</p>}
 
       {initialItems.length > 0 ? (
-        <ul className="mt-4 divide-y divide-slate-100">
+        <ul className="mt-4 divide-y divide-zinc-800">
           {initialItems.map((item) => (
             <li key={item.id} className="flex items-start gap-3 py-3">
               <input
                 type="checkbox"
                 checked={item.done}
                 onChange={() => toggle(item)}
-                className="mt-1 h-4 w-4 rounded border-slate-300 text-brand-600 focus:ring-brand-500"
+                className="mt-1 h-4 w-4 rounded border-zinc-700 text-brand-400 focus:ring-brand-500"
               />
               <div className="flex-1">
                 <p
                   className={`text-sm ${
                     item.done
-                      ? "text-slate-400 line-through"
-                      : "text-slate-800"
+                      ? "text-zinc-500 line-through"
+                      : "text-zinc-200"
                   }`}
                 >
                   {item.text}
                 </p>
-                <p className="mt-0.5 text-xs text-slate-400">
+                <p className="mt-0.5 text-xs text-zinc-500">
                   {item.owner ? `Owner: ${item.owner}` : "No owner"}
                   {item.dueDate
                     ? ` · Due ${new Date(item.dueDate).toLocaleDateString()}`
@@ -140,7 +140,7 @@ export default function ActionItemsPanel({
           ))}
         </ul>
       ) : (
-        <p className="mt-4 text-sm text-slate-500">
+        <p className="mt-4 text-sm text-zinc-400">
           No action items yet.{" "}
           {hasTranscript
             ? "Click “Extract action items” to generate them from the transcript."

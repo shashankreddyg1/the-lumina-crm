@@ -5,6 +5,7 @@ import { getDb } from "@/lib/db";
 import { demoDashboardData } from "@/lib/demoStore";
 import { formatMoney, type DashboardData } from "@/lib/demo";
 import StatusBadge from "@/components/StatusBadge";
+import FadeIn from "@/components/FadeIn";
 
 const STAGE_ORDER = [
   "DISCOVERY",
@@ -95,58 +96,57 @@ export default async function DashboardPage() {
 
   return (
     <div className="space-y-8">
-      <div className="flex items-start justify-between">
+      <FadeIn className="flex items-start justify-between">
         <div>
-          <h1 className="text-2xl font-bold tracking-tight text-slate-900">
+          <h1 className="text-2xl font-bold tracking-tight text-zinc-100">
             Good morning, Alex
           </h1>
-          <p className="mt-1 text-sm text-slate-500">
+          <p className="mt-1 text-sm text-zinc-400">
             Here&apos;s what needs your attention today.
           </p>
         </div>
         {demo && (
-          <span className="rounded-full bg-amber-100 px-3 py-1 text-xs font-medium text-amber-800">
+          <span className="rounded-full bg-amber-400/10 px-3 py-1 text-xs font-medium text-amber-300">
             Demo mode — sample data, no database needed
           </span>
         )}
-      </div>
+      </FadeIn>
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        {data.stats.map((s) => (
-          <div
-            key={s.label}
-            className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm"
-          >
-            <p className="text-sm font-medium text-slate-500">{s.label}</p>
-            <p className="mt-1 text-2xl font-bold tracking-tight text-slate-900">
+        {data.stats.map((s, i) => (
+          <FadeIn key={s.label} delay={i * 0.06}>
+          <div className="rounded-xl border border-zinc-800 bg-zinc-900 p-5 shadow-sm transition-colors hover:border-zinc-700">
+            <p className="text-sm font-medium text-zinc-400">{s.label}</p>
+            <p className="mt-1 text-2xl font-bold tracking-tight text-zinc-100">
               {s.value}
             </p>
-            <p className="mt-1 text-xs text-slate-400">{s.sub}</p>
+            <p className="mt-1 text-xs text-zinc-500">{s.sub}</p>
           </div>
+          </FadeIn>
         ))}
       </div>
 
-      <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
-        <div className="rounded-xl border border-slate-200 bg-white shadow-sm lg:col-span-2">
-          <div className="flex items-center justify-between border-b border-slate-100 px-5 py-4">
-            <h2 className="font-semibold text-slate-900">Recent calls</h2>
+      <FadeIn delay={0.2} className="grid grid-cols-1 gap-6 lg:grid-cols-3">
+        <div className="rounded-xl border border-zinc-800 bg-zinc-900 shadow-sm lg:col-span-2">
+          <div className="flex items-center justify-between border-b border-zinc-800 px-5 py-4">
+            <h2 className="font-semibold text-zinc-100">Recent calls</h2>
             <Link
               href="/calls"
-              className="text-sm font-medium text-brand-600 hover:text-brand-700"
+              className="text-sm font-medium text-brand-400 hover:text-brand-300"
             >
               View all
             </Link>
           </div>
-          <ul className="divide-y divide-slate-100">
+          <ul className="divide-y divide-zinc-800">
             {data.recentCalls.map((c) => (
               <li key={c.id}>
                 <Link
                   href={`/calls/${c.id}`}
-                  className="flex items-center justify-between px-5 py-4 hover:bg-slate-50"
+                  className="flex items-center justify-between px-5 py-4 hover:bg-zinc-900/5"
                 >
                   <div>
-                    <p className="font-medium text-slate-900">{c.title}</p>
-                    <p className="mt-0.5 text-sm text-slate-500">
+                    <p className="font-medium text-zinc-100">{c.title}</p>
+                    <p className="mt-0.5 text-sm text-zinc-400">
                       {c.contactName} · {c.company} ·{" "}
                       {new Date(c.createdAt).toLocaleDateString()}
                       {c.openItems > 0 && ` · ${c.openItems} open items`}
@@ -157,9 +157,9 @@ export default async function DashboardPage() {
               </li>
             ))}
             {data.recentCalls.length === 0 && (
-              <li className="px-5 py-8 text-center text-sm text-slate-500">
+              <li className="px-5 py-8 text-center text-sm text-zinc-400">
                 No calls yet. Upload your first recording from the{" "}
-                <Link href="/calls" className="text-brand-600 hover:underline">
+                <Link href="/calls" className="text-brand-400 hover:underline">
                   Calls page
                 </Link>
                 .
@@ -168,23 +168,23 @@ export default async function DashboardPage() {
           </ul>
         </div>
 
-        <div className="rounded-xl border border-slate-200 bg-white shadow-sm">
-          <div className="border-b border-slate-100 px-5 py-4">
-            <h2 className="font-semibold text-slate-900">Pipeline</h2>
+        <div className="rounded-xl border border-zinc-800 bg-zinc-900 shadow-sm">
+          <div className="border-b border-zinc-800 px-5 py-4">
+            <h2 className="font-semibold text-zinc-100">Pipeline</h2>
           </div>
-          <ul className="divide-y divide-slate-100">
+          <ul className="divide-y divide-zinc-800">
             {data.deals.map((d) => (
               <li key={d.id} className="px-5 py-4">
                 <div className="flex items-center justify-between">
-                  <p className="font-medium text-slate-900">{d.title}</p>
-                  <p className="font-semibold text-slate-900">
+                  <p className="font-medium text-zinc-100">{d.title}</p>
+                  <p className="font-semibold text-zinc-100">
                     {formatMoney(d.value)}
                   </p>
                 </div>
-                <p className="mt-1 text-xs font-medium uppercase tracking-wide text-slate-400">
+                <p className="mt-1 text-xs font-medium uppercase tracking-wide text-zinc-500">
                   {stageLabel(d.stage)}
                 </p>
-                <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-slate-100">
+                <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-zinc-800">
                   <div
                     className="h-full rounded-full bg-brand-500"
                     style={{
@@ -201,13 +201,13 @@ export default async function DashboardPage() {
               </li>
             ))}
             {data.deals.length === 0 && (
-              <li className="px-5 py-8 text-center text-sm text-slate-500">
+              <li className="px-5 py-8 text-center text-sm text-zinc-400">
                 No deals yet.
               </li>
             )}
           </ul>
         </div>
-      </div>
+      </FadeIn>
     </div>
   );
 }
